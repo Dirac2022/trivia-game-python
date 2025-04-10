@@ -1,0 +1,29 @@
+# Entorno virtual de Python
+venv/
+
+# Archivos Python compilados
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Archivos temporales o base de datos
+*.log
+*.sqlite3
+*.db
+
+# Variables de entorno
+.env
+*.env
+
+# Archivos del sistema (Windows)
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Configs de editores
+.vscode/
+.idea/
+
+# Archivos swap o backup
+*.swp
+*.bak

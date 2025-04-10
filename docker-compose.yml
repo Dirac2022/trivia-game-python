@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgres://user:password@db:5432/trivia_db
+
+    db:
+      image: postgres:13
+      environment:
+        POSTGRES_USER: user
+        POSTGRES_PASSWORD: password
+        POSTGRES_DB: trivia_db
+      ports:
+        - "5432:5432"
+      volumes:
+        - db_data:/var/lib/postgresql/data  
+
+volumes:
+  db_data:
