@@ -35,3 +35,54 @@ class Question:
         """
         return user_answer == self._correct_answer_index + 1  # +1 porque los índices de las listas empiezan en 0 y las opciones empiezan en 1
     
+
+
+class Quiz:
+    
+    def __init__(self):
+        """Crea una instancia de la clase Quiz
+        """
+        self._questions = []
+        self._current_question_index = 0
+        self._correct_answers = 0
+        self._incorrect_answers = 0
+        
+    
+    def add_question(self, question: Question):
+        """Agrega una pregunta al cuestionario
+
+        Args:
+            question (Question): La pregunta a agregar
+        """
+        self._questions.append(question)
+        
+    def get_next_question(self) -> Question:
+        """Devuelve la siguiente pregunta del cuestionario
+
+        Returns:
+            Question: La siguiente pregunta
+        """
+        if self._current_question_index < len(self._questions):
+            question = self._questions[self._current_question_index]
+            self._current_question_index += 1
+            return question
+        
+        return None
+    
+    
+    def answer_question(self, user_answer: int) -> bool:
+        """Verifica la respuesta del usuario y actualiza el puntaje
+
+        Args:
+            user_answer (int): La respuesta del usuario
+
+        Returns:
+            bool: True si la respuesta es correcta, False si no lo es
+        """
+        question = self._questions[self._current_question_index - 1]
+        if question.is_correct(user_answer):
+            self._correct_answers += 1
+            return True
+        
+        self._incorrect_answers += 1
+        return False
