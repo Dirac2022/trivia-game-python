@@ -51,7 +51,7 @@ def test_answer_question_correct():
         ["Linus Torvalds", "Bill Gates", "Steve Jobs", "Richard Stallman"],
         0)
     quiz.add_question(question)
-    assert quiz.answer_question_correct(0) == True 
+    assert quiz.answer_question(0) == True 
     assert quiz._correct_answers == 1
     assert quiz._incorrect_answers == 0
     

@@ -36,7 +36,7 @@ class Question:
         Returns:
             bool: True si la respuesta del participante coincide con 'correct_answer'
         """
-        return user_answer == self._correct_answer_index + 1  # +1 porque los índices de las listas empiezan en 0 y las opciones empiezan en 1
+        return user_answer == self._correct_answer_index
     
 
 
@@ -77,7 +77,8 @@ class Quiz:
         """Verifica la respuesta del usuario y actualiza el puntaje
 
         Args:
-            user_answer (int): La respuesta del usuario
+            user_answer (int): La respuesta del usuario, de corresponder al indice de la respuesta
+            en la lista de opciones de respuesta.
 
         Returns:
             bool: True si la respuesta es correcta, False si no lo es
@@ -126,7 +127,7 @@ def run_quiz():
         current_question.show_question()
         
         user_answer = int(input("Elige una opción: "))
-        quiz.answer_question(user_answer)
+        quiz.answer_question(user_answer - 1)  # Restar 1 para que coincida con el índice de la lista
         
     print("\nJuego terminado. Aquí está tu puntuación:")
     print(f"Preguntas contestadas: {len(quiz._questions)}")
