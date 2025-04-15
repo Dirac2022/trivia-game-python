@@ -11,7 +11,7 @@ def test_question_creation():
 
 def test_is_correct_true():
     question = Question("2 + 2", ["3", "4", "5", "0"], 1)
-    assert question.is_correct(2) == True  
+    assert question.is_correct(1) == True  
     
 def test_is_correct_false():
     
